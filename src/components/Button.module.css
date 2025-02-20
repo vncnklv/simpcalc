@@ -1,0 +1,12 @@
+.button {
+    background-color: #7A97AB;
+    color: #FAFFFF;
+    flex: 1 1 20%;
+    border: 3px solid #0C1D45;
+    border-radius: 0.2em;
+    user-select: none;
+}
+
+.equals {
+    background-color: #FF8203;
+}

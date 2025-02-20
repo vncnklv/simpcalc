@@ -1,0 +1,8 @@
+.buttons {
+    font-size: 1.8em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3em;
+    aspect-ratio: 1/1;
+    text-align: center;
+}
