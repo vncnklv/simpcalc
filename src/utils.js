@@ -1,5 +1,5 @@
 export function calculateResult(values, operations) {
-    return eval(generateOneLineExpression(values, operations).replaceAll('%', ' * 0.01'));
+    return eval(generateOneLineExpression(values, operations));
 }
 
 export function generateOneLineExpression(values, operations) {

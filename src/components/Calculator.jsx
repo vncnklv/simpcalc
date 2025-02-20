@@ -11,14 +11,12 @@ export default function Calculator() {
 
     const updateInput = (userInput) => {
         if (latestUserInput == "=") {
-            if(isNaN(userInput) && userInput != "=" && userInput != ".")
-            {
+            if (isNaN(userInput) && userInput != "=" && userInput != ".") {
                 setValues([input]);
                 setOperations([]);
                 setInput("");
             }
-            else
-            {
+            else {
                 resetCalculator();
             }
         }
@@ -33,13 +31,13 @@ export default function Calculator() {
             if (values.length == operations.length) {
                 setOperations((prev) => prev.slice(0, -1));
             }
-            
+
             var result = calculateResult(values, operations);
             setInput(result);
         }
         else if (isNaN(userInput)) {
             if (input) {
-                if(latestUserInput != "=") {
+                if (latestUserInput != "=") {
                     setValues(prev => [...prev, input]);
                 }
                 setOperations(prev => [...prev, userInput]);
@@ -62,7 +60,26 @@ export default function Calculator() {
 
     // To do
     const undoLastStep = () => {
+        if(!input & values.length == 0 & operations.length == 0) return;
 
+        if (!latestUserInput || latestUserInput == "=") return;
+
+        if (isNaN(latestUserInput) && latestUserInput != ".") {
+            setOperations(prev => prev.slice(0, -1));
+            setInput(values[values.length - 1]);
+            setValues(prev => prev.slice(0, -1));
+            setLatestUserInput("0");
+        }
+        else {
+            setInput(prev => {
+                const newState = prev.slice(0, -1);
+                if (!newState) {
+                    setLatestUserInput("operation");
+                }
+                return newState;
+            });
+
+        }
     }
 
     return (
